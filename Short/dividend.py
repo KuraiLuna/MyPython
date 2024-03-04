@@ -6,19 +6,30 @@
 By. 倉井ルナ @Luna0x00
 
 """
-from itertools import chain
-import sys
-import math
 
-def calculate_dividend(stock_price ,shares_owned, dividend_yield):        
-    dividend = (stock_price * shares_owned) * (dividend_yield / 1000)
-    return dividend
+# Defining Variables
 
-# ユーザー入力を受ける | 사용자 입력 받기
-stock_price = float(input("保有株式の価格を入力してください: ")) # 보유한 주식 가격을 입력하세요
-shares_owned = float(input("保有している株式の数を入力してください: ")) # 보유한 주식 수를 입력하세요
-dividend_yield = float(input("配当利回りを入力してください(ex: n.nn): ")) # 배당 이율을 입력하세요
+# Current stock price
+current_price = float(input("現在価格を入力してください: ")) 
 
-# 配当金の計算結果 | 배당금 계산결과
-dividend = calculate_dividend(stock_price,shares_owned, dividend_yield)
-print("予想配当金: ${:.2f}".format(dividend)) # 예상 배당금
+# total price of the shares purchased
+purchase_amount = float(input("枚数金額を入力してください: ")) 
+
+ # dividends per share
+dividends_amount = float(input("配当額を入力してください: "))
+
+# Number of shares held
+stock_share = int(input("株式数を入力してください: ")) 
+
+# Calculation of Total Dividend
+T_D = dividends_amount * stock_share
+
+# tax calculation
+TX = T_D * 0.15
+
+# Actual dividend calculation
+SS = T_D - TX
+
+print(f"総配当額: ${T_D}") #Total dividend
+print(f"ぜいきん(15%): ${TX}") #Tax
+print(f"手取り配当金: ${SS}") # actual dividend
